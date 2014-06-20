@@ -20,12 +20,12 @@ def get_connection(backend=None, template_prefix=None, template_suffix=None,
             # First check if class name is omited and we have module in settings
             mod = import_module(klass_path)
             klass_name = 'TemplateBackend'
-        except ImportError, e:
+        except ImportError as e:
             # Fallback to class name
             try:
                 mod_name, klass_name = klass_path.rsplit('.', 1)
                 mod = import_module(mod_name)
-            except ImportError, e:
+            except ImportError as e:
                 raise ImproperlyConfigured(
                     ('Error importing templated email backend module %s: "%s"'
                      % (mod_name, e)))
