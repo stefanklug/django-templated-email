@@ -12,7 +12,7 @@ def _get_node(template, context=Context(), name='subject', block_lookups={}):
     for node in template:
         if isinstance(node, BlockNode) and node.name == name:
             #Rudimentary handling of extended templates, for issue #3
-            for i in xrange(len(node.nodelist)):
+            for i in range(len(node.nodelist)):
                 n = node.nodelist[i]
                 if isinstance(n, BlockNode) and n.name in block_lookups:
                     node.nodelist[i] = block_lookups[n.name]
